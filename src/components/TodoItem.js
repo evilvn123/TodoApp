@@ -1,8 +1,10 @@
+import "../styles/TodoItem.css"
+
 const ToDoItem = ({ item }) => {
   return (
-    <div>
-      <input type="checkbox" checked={item.completed} />
-      <span>{item.text}</span>
+    <div className="item">
+      <input className="checkbox" type="checkbox" checked={item.completed} />
+      <span className="text">{item.text}</span>
     </div>
   );
 };

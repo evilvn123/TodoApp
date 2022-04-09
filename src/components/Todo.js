@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ToDoList from "./TodoList";
+import "../styles/Todo.css"
 
 const ToDo = ({}) => {
   const [list, setList] = useState([
@@ -11,7 +12,7 @@ const ToDo = ({}) => {
     {
       id: 2,
       text: "Learn React",
-      completed: false,
+      completed: true,
     },
     {
       id: 3,
