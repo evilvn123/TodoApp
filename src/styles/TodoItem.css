@@ -1,7 +1,6 @@
 .item{
   border-top: solid 1px #ddd;
   padding: 15px 0;
-  width: 95%;
   display: flex;
   align-items: center;
 }

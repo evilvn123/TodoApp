@@ -22,7 +22,7 @@ const ToDo = ({}) => {
   ]);
   return (
     <div>
-      <input />
+      <input className="input" placeholder="Add task" />
       <ToDoList list={list} />
     </div>
   );
