@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ToDoList from "./TodoList";
 
 const ToDo = ({}) => {
   const [list, setList] = useState([
@@ -18,9 +19,11 @@ const ToDo = ({}) => {
       completed: false,
     },
   ]);
-  return<div>
-    <input />
-    //<ToDoList list={list} />
-  </div>;
+  return (
+    <div>
+      <input />
+      <ToDoList list={list} />
+    </div>
+  );
 };
 export default ToDo;
