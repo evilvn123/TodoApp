@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToDoList from "./TodoList";
 import "../styles/Todo.css"
 
-const ToDo = ({}) => {
+const ToDo = () => {
   const [list, setList] = useState([
     {
       id: 1,
@@ -23,7 +23,7 @@ const ToDo = ({}) => {
   return (
     <div>
       <input className="input" placeholder="Add task" />
-      <ToDoList list={list} />
+      <ToDoList list={list} setList={setList} />
     </div>
   );
 };
