@@ -1,8 +1,22 @@
+.add{
+  display: flex;
+}
+
+.add button{
+  font-size: 25px;
+  font-weight: 400;
+  background-color: white;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+}
+
 .input {
   box-sizing: border-box;
   width: 100%;
   padding: 10px 15px;
   font-size: 18px;
+  margin-right: 5px;
   border: 1px solid #ccc;
 }
 .input:focus {
@@ -10,3 +24,4 @@
   outline: none;
   box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
 }
+

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ToDoList from "./TodoList";
-import "../styles/Todo.css"
+import "../styles/Todo.css";
 
 const ToDo = () => {
   const [list, setList] = useState([
@@ -20,9 +20,13 @@ const ToDo = () => {
       completed: false,
     },
   ]);
+
   return (
     <div>
-      <input className="input" placeholder="Add task" />
+      <div className="add">
+        <input className="input" placeholder="Add task" />
+        <button>+</button>
+      </div>
       <ToDoList list={list} setList={setList} />
     </div>
   );

@@ -20,7 +20,7 @@ const ToDoItem = ({ item, setList, index }) => {
         checked={checked}
         onChange={handleCheck}
       />
-      <span className="text">{item.text}</span>
+      <span className={checked ? "text isCompleted" : "text"}>{item.text}</span>
     </div>
   );
 };
