@@ -22,25 +22,32 @@ const ToDo = () => {
   ]);
 
   //Tạo ra 1 state inputValue với giá trị khởi tạo là ""
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState("");
 
-  const handleChange = (value) => {
-    console.log(value);
+  const handleChange = (event) => {
     // Thay đổi gái trị của state inputValue thành value
-  }
+    setInputValue(event.target.value);
+  };
 
   const handleAdd = () => {
-    //Dùng setList để thêm 1 task vào list với format {{
-    //   id: 1,
+    console.log(inputValue);
+    //Dùng setList để thêm 1 task vào list với format {
+    //   id: x,
     //   text: inputValue,
     //   completed: false,
-    // },}
-  }
+    // },
+    // với x = last id + 1
+  };
 
   return (
     <div>
       <div className="add">
-        <input onChange={handleChange} value={inputValue} className="input" placeholder="Add task" />
+        <input
+          onChange={handleChange}
+          value={inputValue}
+          className="input"
+          placeholder="Add task"
+        />
         <button onClick={handleAdd}>+</button>
       </div>
       <ToDoList list={list} setList={setList} />
