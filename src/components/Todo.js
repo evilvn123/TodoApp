@@ -21,26 +21,39 @@ const ToDo = () => {
     },
   ]);
 
-  //Tạo ra 1 state inputValue với giá trị khởi tạo là ""
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event) => {
-    // Thay đổi gái trị của state inputValue thành value
     setInputValue(event.target.value);
   };
 
   const handleAdd = () => {
-    console.log(inputValue);
-    //Dùng setList để thêm 1 task vào list với format {
-    //   id: x,
-    //   text: inputValue,
-    //   completed: false,
-    // },
-    // với x = last id + 1
+    const newId = list[list.length - 1].id + 1; 
+    // k = list.length: độ dài mảng
+    // list[k-1]: phần tử cuối cùng của mảng list (vì đánh số từ 0)
+    setList((prevList) => [
+      ...prevList,
+      {
+        id: newId,
+        text: inputValue,
+        completed: false,
+      },
+    ]);
   };
+
+  const [mode, setMode] = useState("Active");
+
+  const handleMode = (mode) => {
+    setMode(mode);
+  }
 
   return (
     <div>
+      <div className="control">
+        <button className={mode === "All" ? "modeButton active" : "modeButton"} onClick={() => handleMode("All")}>All</button>
+        <button>Active</button>
+        <button>Completed</button>
+      </div>
       <div className="add">
         <input
           onChange={handleChange}

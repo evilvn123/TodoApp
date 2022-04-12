@@ -2,6 +2,14 @@
   display: flex;
 }
 
+.modeButton{
+
+}
+
+.active{
+  background-color: blue;
+}
+
 .add button{
   font-size: 25px;
   font-weight: 400;
