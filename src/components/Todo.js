@@ -57,8 +57,8 @@ const ToDo = () => {
       const activeList = list.filter((item) => item.completed === false);
       setViewList(activeList);
     } else if (mode === "Completed") {
-      const activeList = list.filter((item) => item.completed === true);
-      setViewList(activeList);
+      const completedList = list.filter((item) => item.completed === true);
+      setViewList(completedList);
     } else {
       setViewList(list);
     }
