@@ -1,13 +1,18 @@
 import { useState } from "react";
 import "../styles/TodoItem.css";
 
-const ToDoItem = ({ item, setList, index }) => {
+const ToDoItem = ({ item, setList }) => {
   const [checked, setChecked] = useState(item.completed);
 
   const handleCheck = (event) => {
     setList((prevList) => {
-      prevList[index].completed = event.target.checked;
-      return prevList;
+      const list = [...prevList];
+      list.forEach((task) => {
+        if (task.id === item.id) {
+          task.completed = event.target.checked;
+        }
+      });
+      return list;
     });
     setChecked(event.target.checked);
   };

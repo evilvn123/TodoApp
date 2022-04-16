@@ -4,8 +4,8 @@ import "../styles/TodoList.css";
 const ToDoList = ({ list, setList }) => {
   return (
     <div className="list">
-      {list.map((item, index) => (
-        <ToDoItem key={item.id} item={item} setList={setList} index={index} />
+      {list.map((item) => (
+        <ToDoItem key={item.id} item={item} setList={setList} />
       ))}
     </div>
   );
