@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToDoList from "./TodoList";
 import "../styles/Todo.css";
 
@@ -21,6 +21,8 @@ const ToDo = () => {
     },
   ]);
 
+  const [viewList, setViewList] = useState(list);
+
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event) => {
@@ -28,7 +30,7 @@ const ToDo = () => {
   };
 
   const handleAdd = () => {
-    const newId = list[list.length - 1].id + 1; 
+    const newId = list[list.length - 1].id + 1;
     // k = list.length: độ dài mảng
     // list[k-1]: phần tử cuối cùng của mảng list (vì đánh số từ 0)
     setList((prevList) => [
@@ -41,18 +43,48 @@ const ToDo = () => {
     ]);
   };
 
-  const [mode, setMode] = useState("Active");
+  const [mode, setMode] = useState("All");
 
   const handleMode = (mode) => {
     setMode(mode);
-  }
+  };
+
+  useEffect(() => {
+    //Thay đổi viewList khi thay đổi các chế độ xem
+    if (mode === "All") {
+      setViewList(list);
+    } else if (mode === "Active") {
+      const activeList = list.filter((item) => item.completed === false);
+      setViewList(activeList);
+    } else if (mode === "Completed") {
+      const activeList = list.filter((item) => item.completed === true);
+      setViewList(activeList);
+    } else {
+      setViewList(list);
+    }
+  }, [mode, list]);
 
   return (
     <div>
       <div className="control">
-        <button className={mode === "All" ? "modeButton active" : "modeButton"} onClick={() => handleMode("All")}>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button
+          className={mode === "All" ? "modeButton active" : "modeButton"}
+          onClick={() => handleMode("All")}
+        >
+          All
+        </button>
+        <button
+          className={mode === "Active" ? "modeButton active" : "modeButton"}
+          onClick={() => handleMode("Active")}
+        >
+          Active
+        </button>
+        <button
+          className={mode === "Completed" ? "modeButton active" : "modeButton"}
+          onClick={() => handleMode("Completed")}
+        >
+          Completed
+        </button>
       </div>
       <div className="add">
         <input
@@ -63,7 +95,7 @@ const ToDo = () => {
         />
         <button onClick={handleAdd}>+</button>
       </div>
-      <ToDoList list={list} setList={setList} />
+      <ToDoList list={viewList} setList={setList} />
     </div>
   );
 };
