@@ -24,6 +24,7 @@ const ToDo = () => {
   const [viewList, setViewList] = useState(list);
 
   const [inputValue, setInputValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -43,6 +44,10 @@ const ToDo = () => {
     ]);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
   const [mode, setMode] = useState("All");
 
   const handleMode = (mode) => {
@@ -51,18 +56,30 @@ const ToDo = () => {
 
   useEffect(() => {
     //Thay đổi viewList khi thay đổi các chế độ xem
+
+    let controlledList = [];
+
+    // step 1:
     if (mode === "All") {
-      setViewList(list);
+      controlledList = list;
     } else if (mode === "Active") {
       const activeList = list.filter((item) => item.completed === false);
-      setViewList(activeList);
+      controlledList = activeList;
     } else if (mode === "Completed") {
       const completedList = list.filter((item) => item.completed === true);
-      setViewList(completedList);
-    } else {
-      setViewList(list);
+      controlledList = completedList;
     }
-  }, [mode, list]);
+
+    //step 2:
+    if (searchValue !== "") {
+      controlledList = controlledList.filter(
+        (item) => item.text.indexOf(searchValue) >= 0
+      );
+    }
+
+    //step 3:
+    setViewList(controlledList);
+  }, [mode, list, searchValue]);
 
   return (
     <div>
@@ -94,6 +111,14 @@ const ToDo = () => {
           placeholder="Add task"
         />
         <button onClick={handleAdd}>+</button>
+      </div>
+      <div className="add">
+        <input
+          onChange={handleSearchChange}
+          value={searchValue}
+          className="input"
+          placeholder="Search"
+        />
       </div>
       <ToDoList list={viewList} setList={setList} />
     </div>
