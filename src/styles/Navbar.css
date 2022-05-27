@@ -1,0 +1,23 @@
+.menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-color: #06b7d6;
+}
+
+.menu .item {
+  padding: 15px 25px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.menu .item:hover {
+  cursor: pointer;
+  background-color: #1095ad;
+}
+
+.menu .last-item {
+  margin-left: auto;
+}
