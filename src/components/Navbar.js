@@ -13,7 +13,7 @@ const Navbar = () => {
       <Link to="/about">
         <li className="item">Product</li>
       </Link>
-      <Link className="last-item" to="/">
+      <Link className="last-item" to="/signin">
         <li className="item">
           <FontAwesomeIcon icon={faUser} />
         </li>
