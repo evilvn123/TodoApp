@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Signin.css";
 
 const Signin = () => {
+  const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeUserName = (event) => {
+    setUsername(event.target.value);
+  };
+  const onChangePassword = (event) => {
+    // console.log(event.target.value);
+    setPassword(event.target.value);
+    // setUsername(event.target.value);
+  };
+  const login = () => {
+    if (username === "user" && password === "123456") {
+      navigate("/");
+    }
+  };
   return (
     <div className="signin">
       <div className="formContainer">
@@ -9,19 +28,19 @@ const Signin = () => {
         <form className="form">
           <input
             name="username"
-            // value={username}
+            value={username}
             type={"text"}
             placeholder="Email or Username"
-            // onChange={onChangeUserName}
+            onChange={onChangeUserName}
           />
           <input
             name="password"
-            // value={password}
+            value={password}
             type={"password"}
             placeholder="Password"
-            // onChange={onChangePassword}
+            onChange={onChangePassword}
           />
-          <button>Login</button>
+          <button onClick={login}>Login</button>
         </form>
       </div>
     </div>
