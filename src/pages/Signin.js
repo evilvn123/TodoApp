@@ -12,9 +12,7 @@ const Signin = () => {
     setUsername(event.target.value);
   };
   const onChangePassword = (event) => {
-    // console.log(event.target.value);
     setPassword(event.target.value);
-    // setUsername(event.target.value);
   };
   const login = () => {
     if (username === "user" && password === "123456") {
