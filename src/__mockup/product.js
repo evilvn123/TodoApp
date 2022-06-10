@@ -22,7 +22,7 @@ const products = [
     name: "Kitten",
     description:
       "Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.",
-    price: "180",
+    price: "200",
     sizes: ["S", "M", "L"],
     colors: ["black", "white", "yellow", "#0ff0cf"],
   },
