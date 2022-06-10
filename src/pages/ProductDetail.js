@@ -6,6 +6,10 @@ import products from "../__mockup/product";
 const ProductDetail = () => {
   const { productId } = useParams();
 
+  const currentProduct = products.find(
+    (item) => item.id === parseInt(productId)
+  );
+
   return <div>{productId}</div>;
 };
 
