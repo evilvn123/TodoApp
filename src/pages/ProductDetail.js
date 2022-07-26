@@ -10,6 +10,21 @@ const ProductDetail = () => {
     (item) => item.id === parseInt(productId)
   );
 
+  const [color, setColor] = useState(currentProduct.colors[0]);
+  const [size, setSize] = useState(currentProduct.sizes[0]);
+
+  const handleChangeColor = (event) => {
+    setColor(event.target.value);
+  };
+
+  const handleChangeSize = (event) => {
+    setSize(event.target.value);
+  };
+
+  const addToCart = () => {
+    console.log(size, color);
+  };
+
   return (
     <div className="productDetail">
       <div className="container">
@@ -37,7 +52,8 @@ const ProductDetail = () => {
                   name="size"
                   type={"radio"}
                   value={item}
-                  // checked={item === size}
+                  checked={item === size}
+                  onChange={handleChangeSize}
                 />
                 <label htmlFor={item}>{item}</label>
               </span>
@@ -46,7 +62,14 @@ const ProductDetail = () => {
           <div className="color">
             {currentProduct.colors.map((item) => (
               <span key={item}>
-                <input id={item} name="color" type={"radio"} value={item} />
+                <input
+                  id={item}
+                  name="color"
+                  type={"radio"}
+                  value={item}
+                  checked={item === color}
+                  onChange={handleChangeColor}
+                />
                 <label htmlFor={item}>
                   <div
                     style={{
@@ -61,7 +84,7 @@ const ProductDetail = () => {
               </span>
             ))}
           </div>
-          <button>Thêm vào giỏ</button>
+          <button onClick={addToCart}>Thêm vào giỏ</button>
         </div>
       </div>
     </div>
