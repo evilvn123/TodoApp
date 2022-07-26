@@ -22,7 +22,21 @@ const ProductDetail = () => {
   };
 
   const addToCart = () => {
-    console.log(size, color);
+    //Lấy giá trị hiện tại: 1 mảng các product
+    const currentCart = localStorage.getItem("cart"); // => chuỗi
+    const cartArr = JSON.parse(currentCart) || []; //Nếu không có giá trị sẵn => quy về mảng rỗng
+
+    cartArr.push({
+      id: currentProduct.id,
+      name: currentProduct.name,
+      price: currentProduct.price,
+      size: size,
+      color: color,
+      quantity: 1,
+    });
+
+    //Lưu
+    localStorage.setItem("cart", JSON.stringify(cartArr));
   };
 
   return (
