@@ -22,23 +22,18 @@ const ProductDetail = () => {
   };
 
   const addToCart = () => {
-    //Lấy giá trị hiện tại: 1 mảng các product
-    const currentCart = localStorage.getItem("cart"); // => chuỗi
-    const cartArr = JSON.parse(currentCart) || []; //Nếu không có giá trị sẵn => quy về mảng rỗng
-
-    // Tìm trong giỏ hàng hiện tại, xem có product này hay chưa (check dựa vào id, color, size)
-    //Gợi ý: dùng cartArr.find()
-    // Nếu ko có thì push vào cuối mảng
-    // Nếu có, thì tăng quantity lên 1
-
+    //B1: Kiểm tra giỏ hàng hiện tại
+    const currentCart = localStorage.getItem("cart");
+    const cartArr = JSON.parse(currentCart) || [];
+    //B2: Kiểm tra phần tử có tồn tại trong giỏ chưa (cartArr.find)
     const product = cartArr.find(
       (item) =>
         item.id === currentProduct.id &&
         item.color === color &&
         item.size === size
     );
-
-    //B2: Nếu chưa có, thì push vào cuối mảng
+    // Nếu chưa => thêm phần tử vào (cuối mảng) giỏ hàng đấy
+    // Nếu có => +1 vào quantity của phần tử đấy
     if (product === undefined) {
       cartArr.push({
         id: currentProduct.id,
@@ -52,8 +47,8 @@ const ProductDetail = () => {
     } else {
       product.quantity += 1;
     }
-    //Lưu
-    localStorage.setItem("cart", JSON.stringify(cartArr));
+    //B3: Lưu kết quả mới lại vào trong local storage
+    localStorage.setItem("cart", JSON.stringify(cartArr)); // Lưu vào local storage
   };
 
   return (
