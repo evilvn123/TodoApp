@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Signin from "./pages/Signin";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path=":productId" element={<ProductDetail />} />
         </Route>
         <Route path="/signin" element={<Signin />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       {/* <Footer /> */}
     </Router>
